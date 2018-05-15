@@ -7,11 +7,14 @@
   <body>
     <video id="preview"></video>
     <h3>Video Demo</h3>
-    <input type="file" accept="image/*" capture="camera" />
+    <div id="content">123</div>
+    <div id="content2">123</div>
     <script type="text/javascript">
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
         console.log(content);
+        document.getElementById("content").innerHTML = "whatever";
+        document.getElementById("content2").innerHTML = content;
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
