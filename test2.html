@@ -8,13 +8,18 @@
     <video id="preview"></video>
     <h3>Video Demo</h3>
     <div id="content">123</div>
-    <div id="content2">123</div>
+    <div id="test_div">123</div>
     <script type="text/javascript">
-      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false});
       scanner.addListener('scan', function (content) {
         console.log(content);
         document.getElementById("content").innerHTML = "whatever";
         document.getElementById("content2").innerHTML = content;
+        if (window.navigator && window.navigator.vibrate) {
+          navigator.vibrate(1000);
+        } else {
+          document.getElementById("test_div").innerHTML = "Este dispositivo no soporta vibracion";
+        }
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
