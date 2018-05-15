@@ -10,6 +10,7 @@
     <div id="content">123</div>
     <div id="test_div">123</div>
     <script type="text/javascript">
+      console.log("1117");
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false});
       scanner.addListener('scan', function (content) {
         document.getElementById("content").innerHTML = "whatever";
