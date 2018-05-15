@@ -13,13 +13,12 @@
       console.log("1120");
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
       scanner.addListener('scan', function (content) {
-        document.getElementById("content").innerHTML = "whatever";
-        document.getElementById("content2").innerHTML = content;
-        /*if (navigator.vibrate === undefined) {
+        document.getElementById("content").innerHTML = content;
+        if (navigator.vibrate === undefined) {
           document.getElementById("test_div").innerHTML = "Este dispositivo no soporta vibracion";
         } else {
           navigator.vibrate(200);
-        }*/
+        }
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
