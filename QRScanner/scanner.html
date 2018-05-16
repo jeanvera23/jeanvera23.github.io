@@ -6,9 +6,8 @@
   </head>
   <body>
     <video id="preview"></video>
-    <div class="md-fab-wrapper ">
-        <a class="md-fab md-fab-success md-fab-wave-light" href="index.html"><i class="material-icons">close</i></a>
-    </div>
+    <div id="content"></div>
+    <div id="test_div"></div>
     <script type="text/javascript">
       console.log("1120");
       let opts = {
@@ -44,14 +43,15 @@
       };
       let scanner = new Instascan.Scanner(opts);
       scanner.addListener('scan', function (content) {
-        document.getElementById("content").innerHTML = content;
         scanner.stop();
         if (navigator.vibrate === undefined) {
           document.getElementById("test_div").innerHTML = "Este dispositivo no soporta vibracion";
-          location.href = "index.html?code="+content;
+          
         } else {
           navigator.vibrate(200);
         }
+        document.getElementById("content").innerHTML = content;
+        location.href = "index.html?code="+content;
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
