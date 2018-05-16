@@ -92,23 +92,36 @@
     <script>
       function Validar(){
         var Input = $("#input_code").val();
-        //var datas = JSON.stringify({"codigoUsuario":Input});
+        var datas = JSON.stringify({"codigoUsuario":Input});
         //var URL = "<?php echo $WebServicesURL; ?>/ObtenerUsuarioSancionado";
-        var URL = "<?php echo $WebServicesURL; ?>/ObtenerUsuarioSancionado";
-        $.ajax({
+        var URL = "http://appfia.com/Views/script_getPersonabyNroTarjeta.php?nro_tarjeta="+Input;
+        /*$.ajax({
             type: "POST",
             url: URL,
             contentType : "application/json; charset=utf-8",
             dataType: "text",
             data: datas,
             success: function (data) { 
-                
+                console.log(data);
+            },
+            error: function (request, status, error) {
+                alert("Hubo un error "+request.responseText);
+            }
+        });*/
+        $.ajax({
+            type: "POST",
+            url: URL,
+            dataType: 'text',
+            data: datas,
+            success: function (data) { 
+              console.log(data)
+              var OBJ = $.parseJSON(data);
+              console.log(OBJ.NombreEmpresa);
             },
             error: function (request, status, error) {
                 alert("Hubo un error "+request.responseText);
             }
         });
-        
         setImg(Input);
       }
       function setImg(valor){
