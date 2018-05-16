@@ -48,6 +48,7 @@
         scanner.stop();
         if (navigator.vibrate === undefined) {
           document.getElementById("test_div").innerHTML = "Este dispositivo no soporta vibracion";
+          location.href("index.html?code="+content);
         } else {
           navigator.vibrate(200);
         }

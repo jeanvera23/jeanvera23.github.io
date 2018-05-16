@@ -6,51 +6,108 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>UCSM Voto - QR Scanner</title>
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="css/mdb.min.css" rel="stylesheet">
         <!-- Your custom styles (optional) -->
         <link href="css/style.css" rel="stylesheet">
+        <style>
+          .bg {
+              height: 500px;
+              background:#1c2a48;
+              /*background: linear-gradient(to bottom right, #159957, #155799); /* Standard syntax (must be last) */
+              background-repeat: repeat-y;
+              position: relative;
+          }
+        </style>
     </head>
-  <body>
+  <body class="bg">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6"><br>
+          <img src="img/ucsm_logo.png" class="img-fluid" alt="">
           <div class="card card-cascade narrower">
-            <div class="view overlay">
+            <!--<div class="view overlay">
                 <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg" class="img-fluid" alt="narrower">
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
-            <!--/.Card image-->
+            /.Card image-->
 
             <!--Card content-->
             <div class="card-body">
-                <h5 class="pink-text"><i class="fa fa-cutlery"></i> Culinary</h5>
+                <h5 class="pink-text"><i class="fa fa-cutlery"></i>Sistema de Votación UCSM</h5>
                 <!--Title-->
-                <h4 class="card-title">Cheat day inspirations</h4>
+                <h4 class="card-title">Validación de Codigos</h4>
                 <!--Text-->
-                <p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
-                <a class="btn btn-unique">Button</a>
+                <p class="card-text" align="justify">Haga click sobre el botón de la esquina inferior izquierda o ingrese el codigo en el siguiente espacio.</p>
+                
+                <!-- Grid row -->
+                <div class="row">
+                    <!-- Grid column -->
+                    <div class="col">
+                        <!-- Material input -->
+                        <div class="md-form mt-0">
+                          <input type="text" id="input_code" class="form-control" placeholder="Codigo">
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col">
+                        <!-- Material input -->
+                            <a class="btn btn-unique" onclick="Validar();">VERIFICAR</a>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
             </div>
-          </div>
+          </div><br>
+          <div class="card">
+              <div class="card-body">
+                  <h5 align="center">123456</h5>
+                  <div id="result">
+                    <img src="img/verificado.jpg" class="img-fluid" alt="">
+                  </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-lg red">
-            <i class="fa fa-pencil"></i>
+    <a class="btn-floating btn-lg pink" href="scanner.html">
+        <i class="fas fa-qrcode"></i>
+    </a>
+    <!--<div class="fixed-action-btn" style="bottom: 15px; right: 15px;">
+        <a class="btn-floating btn-lg pink" href="scanner.html">
+            <i class="fas fa-qrcode"></i>
         </a>
-    
-        <ul class="list-unstyled">
-            <li><a class="btn-floating red"><i class="fa fa-star"></i></a></li>
-            <li><a class="btn-floating yellow darken-1"><i class="fa fa-user"></i></a></li>
-            <li><a class="btn-floating green"><i class="fa fa-envelope"></i></a></li>
-            <li><a class="btn-floating blue"><i class="fa fa-shopping-cart"></i></a></li>
-        </ul>
-    </div>
+    </div><!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script>
+      function Validar(){
+        var Input = $("#input_code").val();
+        setImg(Input);
+      }
+      function setImg(valor){
+
+        if(valor == 1){
+          alert(valor);
+          $("#result").html('<img src="img/verificado.jpg" class="img-fluid" alt="">');
+        }else{
+          $("#result").html('<img src="img/no-verificado.jpg" class="img-fluid" alt="">');
+        }
+      }
+      
+    </script>
   </body>
 </html>
