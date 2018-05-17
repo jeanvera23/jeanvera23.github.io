@@ -1,0 +1,138 @@
+[
+    {
+        "title": "Mis Clases",
+        "url": "page_registrodeclases.php",
+        "icon": "book",
+        "rol": "admin"
+    },
+    
+    {
+        "title": "Reemplazos",
+        "url": "page_reemplazodeclases.php",
+        "icon": "book",
+        "rol": "admin"
+    },{
+        "title": "Mis Reportes",
+        "url": "page_docente_reportes.php",
+        "icon": "assignment",
+        "rol": "admin"
+    },{
+        "title": "Registros de Clases",
+        "url": "page_coordinador_editor.php",
+        "icon": "assignment",
+        "rol": "admin"
+    },{
+        "title": "Regularizar Registros",
+        "url": "page_coordinador_regularizar.php",
+        "icon": "update",
+        "rol": "admin"
+    },{
+        "title": "Distribución de Grupos",
+        "url": "page_distribucion_grupos.php",
+        "icon": "group",
+        "rol": "admin"
+    },
+    {
+        "title": "Calendario",
+        "url": "http://calendar.google.com",
+        "icon": "date_range",
+        "rol": "admin"
+    },
+    {
+        "title": "Info. Academica",
+        "url": "page_coordinador_busqueda_por_alumno.php",
+        "icon": "info",
+        "rol": "admin"
+    },
+    {
+        "title": "Reportes Coordinador",
+        "url": "page_coordinador_reportes.php",
+        "icon": "assignment",
+        "rol": "admin"
+    },{
+        "title": "Configuraciones",
+        "url": "page_coordinador_config.php",
+        "icon": "settings",
+        "rol": "admin"
+    },
+    {
+        "title": "Salir",
+        "url": "logout.php",
+        "icon": "power_settings_new",
+        "rol": "admin"
+    },
+    {
+        "title": "Mis Clases",
+        "url": "page_registrodeclases.php",
+        "icon": "book",
+        "rol": "profesor"
+    },
+    {
+        "title": "Reemplazos",
+        "url": "page_reemplazodeclases.php",
+        "icon": "book",
+        "rol": "profesor"
+    },{
+        "title": "Reportes",
+        "url": "page_docente_reportes.php",
+        "icon": "assignment",
+        "rol": "profesor"
+    },
+    {
+        "title": "Info. Academica",
+        "url": "page_coordinador_busqueda_por_alumno.php",
+        "icon": "info",
+        "rol": "profesor"
+    },{
+        "title": "Calendario",
+        "url": "http://calendar.google.com",
+        "icon": "date_range",
+        "rol": "profesor"
+    },
+    {
+        "title": "Salir",
+        "url": "logout.php",
+        "icon": "power_settings_new",
+        "rol": "profesor"
+    },
+    {
+        "title": "Mis Clases",
+        "url": "page_registrodeclases.php",
+        "icon": "book",
+        "rol": "tutor"
+    },
+    {
+        "title": "Reemplazos",
+        "url": "page_reemplazodeclases.php",
+        "icon": "book",
+        "rol": "tutor"
+    },{
+        "title": "Reportes",
+        "url": "page_docente_reportes.php",
+        "icon": "assignment",
+        "rol": "tutor"
+    },
+    {
+        "title": "Tutor",
+        "url": "page_tutor_reporte.php",
+        "icon": "assignment",
+        "rol": "tutor"
+    },
+    {
+        "title": "Info. Academica",
+        "url": "page_coordinador_busqueda_por_alumno.php",
+        "icon": "info",
+        "rol": "tutor"
+    },{
+        "title": "Calendario",
+        "url": "http://calendar.google.com",
+        "icon": "date_range",
+        "rol": "tutor"
+    },
+    {
+        "title": "Salir",
+        "url": "logout.php",
+        "icon": "power_settings_new",
+        "rol": "tutor"
+    }
+]

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>UCSM Voto - QR Scanner</title>
+
+  <!-- uikit -->
+  <link rel="stylesheet" href="bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
+
+  <!-- flag icons -->
+  <link rel="stylesheet" href="assets/icons/flags/flags.min.css" media="all">
+
+  <!-- style switcher -->
+  <link rel="stylesheet" href="assets/css/style_switcher.min.css" media="all">
+
+  <!-- altair admin -->
+  <link rel="stylesheet" href="assets/css/main.min.css" media="all">
+
+  <!-- themes -->
+  <link rel="stylesheet" href="assets/css/themes/themes_combined.min.css" media="all">
+  <style type="text/css" media="screen">
+    html {
+
+              background: linear-gradient(to bottom right, #159957, #155799); /* Standard syntax (must be last) */
+    }
+  </style>
+</head>
+<body>
+  <!-- main header -->
+    <header id="header_main">
+        <div class="header_main_content">
+            <!--<nav class="uk-navbar">
+                <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                    <span class="sSwitchIcon"></span>
+                </a>
+                
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav user_actions">
+                        
+                    </ul>
+                </div>
+            </nav>-->
+        </div>
+        
+    </header><!-- main header end -->
+  <div id="page_content">
+    <div id="page_content_inner">
+      <div class="uk-grid">
+        <div class="uk-width-medium-1-1" align="center">
+          <img src="img/ucsm_logo.png" width="90%" ><br>
+          <div class="md-card">
+            <div class="md-card-content">
+              <div class="uk-width-large-1-4 uk-width-medium-1-2">
+                <h4 class="card-title">Validación de Codigos</h4>
+                <!--Text-->
+                <p class="card-text" align="justify">Haga click sobre el botón de la esquina inferior izquierda o ingrese el codigo en el siguiente espacio.</p>
+                <div class="uk-input-group">
+                  <div class="md-input-wrapper"><label>Codigo de Validación</label>
+                    <input type="text" class="md-input" id="input_code"><span class="md-input-bar "></span>
+                  </div>
+                  <span class="uk-input-group-addon"><a class="md-btn md-btn-primary" onclick="Validar();">Validar</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="md-card">
+            <div class="md-card-content">
+              <h5 align="center">123456</h5>
+              <div id="result">
+                <img src="img/verificado.jpg" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="md-fab-wrapper ">
+      <a class="md-fab md-bg-pink-600 md-fab-wave-light" href="scanner.html" ><i class="material-icons md-color-white">search</i></a>
+  </div>
+  <!-- SCRIPTS -->
+  <!-- common functions -->
+  <script src="assets/js/common.min.js"></script>
+  <!-- uikit functions -->
+  <script src="assets/js/uikit_custom.min.js"></script>
+  <!-- altair common functions/helpers -->
+  <script src="assets/js/altair_admin_common.min.js"></script>
+  <script>
+    $(document).ready(function() {
+            $('html').addClass("app_theme_b");
+            //alert("a");
+        });
+    function Validar(){
+      var Input = $("#input_code").val();
+        /*var URL = "https://sigeva.ucsm.edu.pe:444/ReportesService/ReporteConsultaHorarios.svc/ObtenerFotoAlumno";
+        var datas = JSON.stringify({"codigoPersona":"765","seguridad":"ABCDE"});
+        var fotoPersona;
+        $.ajax({
+            type: "POST",
+            url: URL,
+            contentType : "application/json; charset=utf-8",
+            dataType: "text",
+            data: datas, 
+            success: function(data) {
+              var ObtenerFotoAlumnoJSON = $.parseJSON(data);
+              console.log(ObtenerFotoAlumnoJSON);
+              console.log(ObtenerFotoAlumnoJSON.ObtenerFotoAlumnoResult[0].codigoPersona);
+            },
+            error: function (request, status, error) {
+                alert("Hubo un error "+request.responseText);
+            }
+          });*/
+          var URL = "http://appfia.com/Views/script_getPersonabyNroTarjeta.php?nro_tarjeta="+Input;
+          $.ajax({
+            type: "POST",
+            url: URL,
+            dataType: 'text',
+            success: function (data) { 
+              console.log(data)
+              var OBJ = $.parseJSON(data);
+              console.log(OBJ.NombreEmpresa);
+            },
+            error: function (request, status, error) {
+              alert("Hubo un error "+request.responseText);
+            }
+          });
+          setImg(Input);
+        }
+        function setImg(valor){
+          if(valor == 1){
+            $("#result").html('<img src="img/verificado.jpg" class="img-fluid" alt="">');
+          }else{
+            $("#result").html('<img src="img/no-verificado.jpg" class="img-fluid" alt="">');
+          }
+        }
+
+      </script>
+    </body>
+    </html>
