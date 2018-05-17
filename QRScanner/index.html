@@ -103,6 +103,7 @@
             data: datas, 
             success: function(data) {
               var ObtenerFotoAlumnoJSON = $.parseJSON(data);
+              console.log(ObtenerFotoAlumnoJSON);
               console.log(ObtenerFotoAlumnoJSON.ObtenerFotoAlumnoResult[0].codigoPersona);
             },
             error: function (request, status, error) {
