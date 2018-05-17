@@ -94,7 +94,7 @@
         });
     function Validar(){
       var Input = $("#input_code").val();
-        /*var URL = "https://sigeva.ucsm.edu.pe:444/ReportesService/ReporteConsultaHorarios.svc/ObtenerFotoAlumno";
+        var URL = "https://sigeva.ucsm.edu.pe:444/ReportesService/ReporteConsultaHorarios.svc/ObtenerFotoAlumno";
         var datas = JSON.stringify({"codigoPersona":"765","seguridad":"ABCDE"});
         var fotoPersona;
         $.ajax({
@@ -111,7 +111,8 @@
             error: function (request, status, error) {
                 alert("Hubo un error "+request.responseText);
             }
-          });*/
+          });
+        /*
           var URL = "http://appfia.com/Views/script_getPersonabyNroTarjeta.php?nro_tarjeta="+Input;
           $.ajax({
             type: "POST",
@@ -125,7 +126,7 @@
             error: function (request, status, error) {
               alert("Hubo un error "+request.responseText);
             }
-          });
+          });*/
           setImg(Input);
         }
         function setImg(valor){
