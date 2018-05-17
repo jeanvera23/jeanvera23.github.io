@@ -1,0 +1,22 @@
+{
+  "short_name": "UCSM QR Scanner",
+  "name": "UCSM QR Scanner",
+  "icons": [
+    
+    {
+      "src": "img/logo_ico512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+  {
+      "src": "img/logo_ico192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+    "display": "standalone",
+    "theme_color": "#689f38",
+    "background_color": "#ffffff",
+    "start_url": "../Views/login.php",
+    "gcm_sender_id": "482941778795"
+}

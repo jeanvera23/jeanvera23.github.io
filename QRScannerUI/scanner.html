@@ -51,8 +51,8 @@
       <div class="uk-grid">
         <div class="uk-width-medium-1-1" align="center">
           <video width="100%" id="preview"></video>
-          <div id="content"></div>
-          <div id="test_div"></div>
+          <div class="md-color-white" id="content"></div>
+          <div  id="test_div"></div>
         </div>
       </div>
     </div>
@@ -108,7 +108,7 @@
         } else {
           navigator.vibrate(200);
         }
-        document.getElementById("content").innerHTML = content;
+        document.getElementById("content").innerHTML = "Code: "+content;
         location.href = "index.html?code="+content;
       });
       Instascan.Camera.getCameras().then(function (cameras) {
