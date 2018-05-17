@@ -19,10 +19,7 @@ self.addEventListener("install", function(event) {
         */
         return cache.addAll([
           '/',
-          'login.php',
-          'assets/css/login_page.min.css',
-          'assets/css/fonts-css.css',
-          'assets/js/common.min.js'
+          'index.html'
         ]);
       })
       .then(function() {
