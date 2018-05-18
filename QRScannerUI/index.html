@@ -45,7 +45,7 @@
                 <!--Text-->
                 <p align="justify" class="md-color-white">Haga click sobre el botón de la esquina inferior derecha o ingrese el codigo en el siguiente espacio.</p><br>
                 <div class="uk-input-group" align="left">
-                  <div class="md-input-wrapper"><label class="md-color-white">Codigo de Validación</label>
+                  <div class="md-input-wrapper md-input-filled"><label class="md-color-white">Codigo de Validación</label>
                     <input type="text" class="md-input md-color-white" id="input_code"><span class="md-input-bar md-color-white"></span>
                   </div>
                   <span class="uk-input-group-addon"><a class="md-btn md-btn-primary md-bg-pink-700" onclick="Validar();">Verificar</a></span>
@@ -69,16 +69,28 @@
   <script src="assets/js/uikit_custom.min.js"></script>
   <!-- altair common functions/helpers -->
   <script src="assets/js/altair_admin_common.min.js"></script>
+  <script src="variable.js"></script>
   <script>
     $(document).ready(function() {
             $('html').addClass("app_theme_b");
-            //alert("a");
+            var code = getQueryVariable("code");
+            if(code){
+              $("#input_code").val(code);
+              ConsumeWebService(code);
+            }
         });
-    function Validar(){
-      var true_sound = new Audio('audio/true_sound.mp3');
-      var wrong_sound = new Audio('audio/wrong_sound.mp3');
-      var Input = $("#input_code").val();
-        var URL = "https://sigeva.ucsm.edu.pe:444/EleccionesService/Elecciones.svc/ValidarVoto";
+    function getQueryVariable(variable)
+    {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+    }
+    function ConsumeWebService(Input){
+      var URL = "https://sigeva.ucsm.edu.pe:444/EleccionesService/Elecciones.svc/ValidarVoto";
         var datas = JSON.stringify({"llave":Input.trim(),"seguridad":"ABCDE"});
         var fotoPersona;
         $.ajax({
@@ -124,7 +136,13 @@
               alert("Hubo un error "+request.responseText);
             }
           });*/
-        }
+    }
+    function Validar(){
+      var true_sound = new Audio('audio/true_sound.mp3');
+      var wrong_sound = new Audio('audio/wrong_sound.mp3');
+      var Input = $("#input_code").val();
+      ConsumeWebService(Input);
+    }
         function setImg(valor){
           if(valor == 1){
             $("#result").html('<img src="img/verificado.jpg" class="img-fluid" alt="">');
