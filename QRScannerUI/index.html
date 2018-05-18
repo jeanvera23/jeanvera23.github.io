@@ -71,9 +71,9 @@
           </div>
           <div class="md-card">
             <div class="md-card-content">
-              <h5 align="center">123456</h5>
+              <h5 align="center" id="codigo_label"></h5>
               <div id="result">
-                <img src="img/verificado.jpg" alt="">
+                <img src="img/notset.jpg" alt="">
               </div>
             </div>
           </div>
@@ -98,9 +98,10 @@
         });
     function Validar(){
       var Input = $("#input_code").val();
-        var URL = "https://sigeva.ucsm.edu.pe:444/ReportesService/ReporteConsultaHorarios.svc/ObtenerFotoAlumno";
-        var datas = JSON.stringify({"codigoPersona":"765","seguridad":"ABCDE"});
+        var URL = "https://sigeva.ucsm.edu.pe:444/EleccionesService/Elecciones.svc/ValidarVoto";
+        var datas = JSON.stringify({"llave":Input.trim(),"seguridad":"ABCDE"});
         var fotoPersona;
+        $("#codigo_label").html(Input);
         $.ajax({
             type: "POST",
             url: URL,
@@ -108,12 +109,21 @@
             dataType: "text",
             data: datas, 
             success: function(data) {
-              var ObtenerFotoAlumnoJSON = $.parseJSON(data);
+              var ValidarVotoJSON = $.parseJSON(data);
+              /* A Realizar en caso de devolución JSON
+
               console.log(ObtenerFotoAlumnoJSON);
               console.log(ObtenerFotoAlumnoJSON.ObtenerFotoAlumnoResult[0].codigoPersona);
+              */
+              if(ValidarVotoJSON.ValidarVotoResult){
+                setImg(1);
+              }else{
+                setImg(2);
+              }
             },
             error: function (request, status, error) {
-                alert("Hubo un error "+request.responseText);
+                alert("Codigo no existe");
+                $("#result").html('<img src="img/notset.jpg" alt="">');
             }
           });
         /*
@@ -131,7 +141,6 @@
               alert("Hubo un error "+request.responseText);
             }
           });*/
-          setImg(Input);
         }
         function setImg(valor){
           if(valor == 1){

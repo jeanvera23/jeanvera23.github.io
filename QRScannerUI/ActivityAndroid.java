@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void getInfoBD(final String codigo){
         textResult.setText("entro getinfo");
-        final String URL = "https://sigeva.ucsm.edu.pe:444/ReportesService/ReporteConsultaHorarios.svc/ObtenerFotoAlumno";
+        final String URL = "https://sigeva.ucsm.edu.pe:444/EleccionesService/Elecciones.svc/ValidarVoto";
         //String JSONString = "{'codigoPersona':'765','seguridad':'ABCDE'}";
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("codigoPersona", "765");
+        params.put("llave", codigo);
         params.put("seguridad", "ABCDE");
         JSONObject JSONParams = new JSONObject(params);
         Log.d("TAG","Buscando");
@@ -92,15 +92,21 @@ public class MainActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
                         try {
-                            //converting the string to json array object
-                            JSONArray ObtenerFotoAlumnoResult = response.optJSONArray("ObtenerFotoAlumnoResult");
-                            Log.d("TAG",response.toString());
-                            Log.d("TAG",ObtenerFotoAlumnoResult.toString());
+                            /* Cuando devuelve un Array JSON */
+                            /*JSONArray ObtenerFotoAlumnoResult = response.optJSONArray("ValidarVotoResult");
                             JSONObject Result = ObtenerFotoAlumnoResult.getJSONObject(0);
                             String codigoPersona = Result.get("codigoPersona").toString();
                             textResult.setText(codigoPersona);
-                            Log.d("test: ",ObtenerFotoAlumnoResult.toString());
+                            Log.d("test: ",response.toString());
+                            */
+
+                            /* Cuando devuelve un JSON Simple */
+                            JSONObject ValidarVotoResult = response;
+                            String codigoPersona = ValidarVotoResult.get("ValidarVotoResult").toString();
+                            textResult.setText(codigoPersona);
+                            Log.d("test: ",codigoPersona);
                             //hideDialog();
                             //String imagenPerson = "http://appfia.com//Views//assets//resources//fotos_acreditados//12345678.jpg";
                             //Picasso.with(getApplicationContext()).load(imagenPerson).into(imageView);
@@ -124,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Log.d("TAG","Error JSON");
+                            textResult.setText("Este codigo no existe.");
                         }
                     }
                 },
@@ -131,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("TAG", error.getMessage(), error);
+                        textResult.setText("Este codigo no existe.");
                     }
                 }) { //no semicolon or coma
                     @Override
