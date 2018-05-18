@@ -40,29 +40,21 @@
           <div>
             <img src="img/ucsm_logo.png" width="80%" >
           </div><br>
-          <div class="md-card">
-            <div class="md-card-content">
               <div class="uk-width-medium-1-1">
-                <h4 class="card-title">Validación de Codigos</h4>
+                <h3 align="left" class="md-color-white">Validación de Codigos</h3>
                 <!--Text-->
-                <p align="justify">Haga click sobre el botón de la esquina inferior izquierda o ingrese el codigo en el siguiente espacio.</p>
-                <div class="uk-input-group">
-                  <div class="md-input-wrapper"><label>Codigo de Validación</label>
-                    <input type="text" class="md-input" id="input_code"><span class="md-input-bar "></span>
+                <p align="justify" class="md-color-white">Haga click sobre el botón de la esquina inferior derecha o ingrese el codigo en el siguiente espacio.</p><br>
+                <div class="uk-input-group" align="left">
+                  <div class="md-input-wrapper"><label class="md-color-white">Codigo de Validación</label>
+                    <input type="text" class="md-input md-color-white" id="input_code"><span class="md-input-bar md-color-white"></span>
                   </div>
-                  <span class="uk-input-group-addon"><a class="md-btn md-btn-primary md-bg-pink-700" onclick="Validar();">Validar</a></span>
+                  <span class="uk-input-group-addon"><a class="md-btn md-btn-primary md-bg-pink-700" onclick="Validar();">Verificar</a></span>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="md-card">
-            <div class="md-card-content">
-              <h5 align="center" id="codigo_label"></h5>
+              </div><br>
+              <h5 align="center" class="md-color-white" id="codigo_label"></h5>
               <div id="result">
                 <img src="img/notset.jpg" alt="">
               </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -83,11 +75,12 @@
             //alert("a");
         });
     function Validar(){
+      var true_sound = new Audio('audio/true_sound.mp3');
+      var wrong_sound = new Audio('audio/wrong_sound.mp3');
       var Input = $("#input_code").val();
         var URL = "https://sigeva.ucsm.edu.pe:444/EleccionesService/Elecciones.svc/ValidarVoto";
         var datas = JSON.stringify({"llave":Input.trim(),"seguridad":"ABCDE"});
         var fotoPersona;
-        $("#codigo_label").html(Input);
         $.ajax({
             type: "POST",
             url: URL,
@@ -103,12 +96,16 @@
               */
               if(ValidarVotoJSON.ValidarVotoResult){
                 setImg(1);
+                $("#codigo_label").html(Input+" - Correcto");
+                true_sound.play();
               }else{
                 setImg(2);
+                $("#codigo_label").html(Input+" - No validado.");
+                wrong_sound.play();
               }
             },
             error: function (request, status, error) {
-                alert("Codigo no existe");
+                $("#codigo_label").html(Input+" - No existe.");
                 $("#result").html('<img src="img/notset.jpg" alt="">');
             }
           });
