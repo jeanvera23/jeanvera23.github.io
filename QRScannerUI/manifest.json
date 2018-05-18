@@ -15,8 +15,9 @@
     }
   ],
     "display": "standalone",
-    "theme_color": "#689f38",
-    "background_color": "#ffffff",
+    "orientation": "portrait",
+    "theme_color": "#004e92",
+    "background_color": "#004e92",
     "start_url": "index.html",
     "gcm_sender_id": "482941778795"
 }
