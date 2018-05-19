@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+nav#nav1{ margin-top: 24px; }
+</style>
+<script>
+var bleep = new Audio();
+bleep.src = "audio/true_sound.mp3";
+function loadContent(num){
+    bleep.play(); // Play button sound now
+    var div1 = document.getElementById("div1");
+    div1.innerHTML = "Loaded content for section "+num;
+}
+</script>
+</head>
+<body>
+  <nav id="nav1">
+    <button onclick="loadContent(1)">Section 1</button>
+    <button onclick="loadContent(2)">Section 2</button>
+    <button onclick="loadContent(3)">Section 3</button>
+  </nav>
+  <div id="div1">Default content ...</div>
+</body>
+</html>
