@@ -9,12 +9,24 @@ function PlaySound1(){
     bleep.play(); 
 }
 function PlaySound2(){
-  playSound("voto_registrado", { volume: .4 });
+  playSound("voto_registrado", { volume: 0.9 });
 }
 </script>
 </head>
 <body>
     <button onclick="PlaySound1()">Prueba 1</button>
+    <audio src="audio/voto_registrado.mp3">
+		<p>Tu navegador no implementa el elemento audio.</p>
+	</audio>
     <button onclick="PlaySound2()">Prueba 2</button>
+    <button onclick="PlaySound3()">Prueba 3</button>
+	<script >
+		function PlaySound3(){
+			var foo = document.getElementById('player');
+			foo.pause();  //just bind play/pause to some onclick events on your page
+			foo.play();
+		}
+	</script>	
 </body>
+
 </html>
